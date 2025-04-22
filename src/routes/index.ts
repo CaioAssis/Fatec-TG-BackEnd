@@ -1,10 +1,10 @@
 import { Router } from 'express'
 
-//import protuctRoutes from './product-routes'
+import userRoutes from './user-routes'
 
 const routes = Router()
 
-//routes.use('/product', protuctRoutes)
+routes.use('/user', userRoutes)
 
 export default routes
 

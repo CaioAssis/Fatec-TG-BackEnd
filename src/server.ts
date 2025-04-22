@@ -26,7 +26,7 @@ export async function connectToDatabase() {
   try {
     await client.connect()
     //console.log("Connected to MongoDB!")
-    return client.db("BDCardapio")
+    return client.db("DB")
   } catch (error) {
     console.error('Erro ao conectar ao MongoDB:', error)
     throw error
