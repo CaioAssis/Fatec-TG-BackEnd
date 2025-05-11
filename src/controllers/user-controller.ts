@@ -6,8 +6,8 @@ export default class UserController {
   static async getUserList(req: Request, res: Response) {
     try {
       const database = await connectToDatabase()
-      const collection = database.collection('User')
-      const users = await collection.find({}).toArray()
+      const collection = database.collection('UserClient')
+      const users = await collection.find().toArray()
       res.status(200).json(users)
     } catch (error) {
       console.error('Erro ao buscar usuários:', error)
@@ -19,7 +19,7 @@ export default class UserController {
     try {
       const { id } = req.params
       const database = await connectToDatabase()
-      const collection = database.collection('User')
+      const collection = database.collection('UserClient')
       const user = await collection.findOne({ _id: new ObjectId(id) })
 
       if (user) {
@@ -39,7 +39,7 @@ export default class UserController {
       const newUser = { uid, name, email, cpf }
 
       const database = await connectToDatabase()
-      const collection = database.collection('User')
+      const collection = database.collection('UserClient')
       const result = await collection.insertOne(newUser)
 
       res.status(201).json({ _id: result.insertedId, ...newUser })
@@ -56,7 +56,7 @@ export default class UserController {
       const updatedUser = { uid, name, email, cpf }
 
       const database = await connectToDatabase()
-      const collection = database.collection('User')
+      const collection = database.collection('UserClient')
       const result = await collection.updateOne(
         { _id: new ObjectId(id) },
         { $set: updatedUser }
@@ -77,7 +77,7 @@ export default class UserController {
     try {
       const { id } = req.params
       const database = await connectToDatabase()
-      const collection = database.collection('User')
+      const collection = database.collection('UserClient')
       const result = await collection.deleteOne({ _id: new ObjectId(id) })
 
       if (result.deletedCount > 0) {
