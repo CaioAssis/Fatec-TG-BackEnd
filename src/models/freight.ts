@@ -8,6 +8,8 @@ export interface IAddress{
 export interface IFreight{
     _id: ObjectId
     userId: string
+    userProvId: string
+    vehicleId: string
     org: IAddress
     dst: IAddress
     date: Date
