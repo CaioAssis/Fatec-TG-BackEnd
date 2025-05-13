@@ -2,7 +2,7 @@ import { ObjectId } from "mongodb"
 
 export interface Vehicle {
     _id: ObjectId
-    userId: string
+    userProvId: string
     fixedPrice: number
     variablePrice: number
     type: string
